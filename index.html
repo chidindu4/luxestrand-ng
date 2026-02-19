@@ -31,48 +31,73 @@
         </div>
 
         <!-- Navigation Links -->
-        <nav class="nav-links">
-          <a href="#">Home</a>
-          <a href="#">Shop</a>
-          <a href="#">Wigs</a>
-          <a href="#">Bundles</a>
-          <a href="#">Reviews</a>
-          <a href="#">Contact</a>
+        <nav class="nav-links" id="primaryNav">
+          <button
+            class="nav-close"
+            id="navClose"
+            type="button"
+            aria-label="Close menu"
+          >
+            Cancel
+          </button>
+          <a href="#home">Home</a>
+          <a href="#shop">Shop</a>
+          <a href="#wigs">Wigs</a>
+          <a href="#bundles">Bundles</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
         </nav>
 
-        <!-- Cart Icon -->
-        <div class="nav-cart">
-          <span class="cart-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="black"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="9" cy="21" r="1"></circle>
-              <circle cx="20" cy="21" r="1"></circle>
-              <path
-                d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
-              ></path>
-            </svg>
-          </span>
-          <span class="cart-count">0</span>
+        <div class="nav-actions">
+          <button
+            class="nav-toggle"
+            id="navToggle"
+            aria-label="Toggle navigation"
+            aria-controls="primaryNav"
+            aria-expanded="false"
+            type="button"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <!-- Cart Icon -->
+          <div class="nav-cart">
+            <span class="cart-icon">
+              <!-- your svg here -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="black"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                ></path>
+              </svg>
+
+              <span class="cart-badge" id="cart-count">0</span>
+            </span>
+          </div>
         </div>
       </div>
-      <hr />
+      <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
     </header>
     <main>
       <!-- Hero Section -->
 
-      <section class="hero">
+      <section id="home" class="hero">
         <div class="hero-content">
           <div class="section-label">
-            <p>New Collection <span id="year"></span></p>
+            <p>New Collection</p>
           </div>
           <h1>
             Luxury Hair, <br />
@@ -149,7 +174,7 @@
 
       <!-- trust section -->
 
-      <section class="trust-section">
+      <section id="shop" class="trust-section">
         <div class="trust-bar">
           <p>
             <span class="trust-svg"
@@ -265,7 +290,7 @@
 
       <!-- product catalog -->
 
-      <section class="catalog-section">
+      <section id="wigs" class="catalog-section">
         <!-- PRODUCT 1 -->
         <div class="product-card">
           <div class="product-image">
@@ -315,7 +340,13 @@
             </div>
 
             <div class="price">₦550,000</div>
-            <button class="add-btn">Add to Selection</button>
+            <button
+              class="add-btn"
+              data-name="Bone Straight Wig"
+              data-price="550000"
+            >
+              Add to Selection
+            </button>
           </div>
         </div>
 
@@ -364,7 +395,13 @@
             </div>
 
             <div class="price">₦550,000</div>
-            <button class="add-btn">Add to Selection</button>
+            <button
+              class="add-btn"
+              data-name="Bone Straight Wig"
+              data-price="550000"
+            >
+              Add to Selection
+            </button>
           </div>
         </div>
 
@@ -413,7 +450,13 @@
             </div>
 
             <div class="price">₦550,000</div>
-            <button class="add-btn">Add to Selection</button>
+            <button
+              class="add-btn"
+              data-name="Bone Straight Wig"
+              data-price="550000"
+            >
+              Add to Selection
+            </button>
           </div>
         </div>
 
@@ -462,10 +505,125 @@
             </div>
 
             <div class="price">₦550,000</div>
-            <button class="add-btn">Add to Selection</button>
+            <button
+              class="add-btn"
+              data-name="Bone Straight Wig"
+              data-price="550000"
+            >
+              Add to Selection
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- mini cart-->
+
+      <section class="mini-cart hidden" id="miniCart">
+        <div class="mini-cart-inner">
+          <h3 class="mini-title">
+            🛒 Selected Items (<span id="cartCount">0</span>)
+          </h3>
+
+          <div class="divider"></div>
+
+          <div id="cartItems"></div>
+
+          <div class="divider"></div>
+
+          <div class="total">Total: ₦<span id="cartTotal">0</span></div>
+
+          <div class="cart-buttons">
+            <button class="order-btn" id="orderBtn">Proceed to Order</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRUST SECTION -->
+      <section
+        id="reviews"
+        class="customer-trust-section customer-trust-hidden"
+      >
+        <div class="customer-trust-container">
+          <div class="customer-trust-left">
+            <h2>Why Customers Love Us</h2>
+
+            <ul class="customer-trust-list">
+              <li>✔ Nationwide Delivery</li>
+              <li>✔ Quality Guaranteed</li>
+              <li>✔ 500+ Happy Customers</li>
+            </ul>
+          </div>
+
+          <div class="customer-trust-right">
+            <h3>Contact Us</h3>
+
+            <div class="customer-contact-item">
+              📱 WhatsApp: +234 XXX XXX XXXX
+            </div>
+
+            <div class="customer-contact-item">📸 Instagram: @luxestrandng</div>
+
+            <div class="customer-contact-item">🚚 Nationwide Delivery</div>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- PREMIUM FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3>LuxeStrand NG</h3>
+          <p>
+            Premium wigs crafted for confidence, delivered with care across
+            Nigeria.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#catalog">Collections</a></li>
+            <li><a href="#catalog">Best Sellers</a></li>
+            <li><a href="#catalog">Custom Orders</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Delivery Info</a></li>
+            <li><a href="#">Returns Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+2340000000000">+234 XXX XXX XXXX</a></li>
+            <li>
+              <a href="https://instagram.com/luxestrandng" target="_blank"
+                >@luxestrandng</a
+              >
+            </li>
+            <li>
+              <a href="mailto:hello@luxestrandng.com">hello@luxestrandng.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; <span id="year"></span> LuxeStrand NG. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="/luxestrand-ng/js/cart.js"></script>
+    <script src="/luxestrand-ng/js/option.js"></script>
+    <script src="/luxestrand-ng/js/scroll.js"></script>
+    <script src="/luxestrand-ng/js/nav.js"></script>
   </body>
 </html>
