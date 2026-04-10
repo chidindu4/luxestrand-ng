@@ -463,6 +463,10 @@ body {
   border-radius: 30px;
   border: 1px solid #ddd;
   background: transparent;
+  color: #111;
+  -webkit-text-fill-color: #111;
+  appearance: none;
+  -webkit-appearance: none;
   cursor: pointer;
   transition: 0.3s ease;
   font-size: 14px;
