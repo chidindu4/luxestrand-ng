@@ -5,9 +5,26 @@ const cartCount = document.getElementById("cartCount");
 const cartTotal = document.getElementById("cartTotal");
 const orderBtn = document.getElementById("orderBtn");
 const navCartCount = document.getElementById("cart-count");
+const navCart = document.querySelector(".nav-cart");
 const currentYear = document.getElementById("year");
 
 let cart = [];
+
+function scrollToMiniCart() {
+  if (!miniCart) return;
+
+  miniCart.classList.remove("hidden");
+  miniCart.classList.add("show");
+
+  miniCart.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+}
+
+if (navCart) {
+  navCart.addEventListener("click", scrollToMiniCart);
+}
 
 addButtons.forEach((button) => {
   button.addEventListener("click", function () {
